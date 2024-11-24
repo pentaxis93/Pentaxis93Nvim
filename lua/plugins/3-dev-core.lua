@@ -37,7 +37,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
-    event = "User BaseDefered",
+    lazy = false,
     cmd = {
       "TSBufDisable",
       "TSBufEnable",
