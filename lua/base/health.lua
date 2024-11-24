@@ -11,7 +11,9 @@ function M.check()
   local distroupdate_config = vim.g.distroupdate_config or {}
   local normalnvim_version = "unknown"
 
-  if success then normalnvim_version = git_utils.current_version(false) end
+  if success and git_utils and git_utils.current_version then
+    normalnvim_version = git_utils.current_version(false) or "unknown"
+  end
   if distroupdate_config.branch == "nightly" then
     normalnvim_version = ("nightly (%s)"):format(normalnvim_version)
   end
