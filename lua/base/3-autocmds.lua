@@ -10,6 +10,7 @@
 --       -> 3. Launch alpha greeter on startup.
 --       -> 4. Update neotree when closing the git client.
 --       -> 5. Create parent directories when saving a file.
+--       -> 6. Auto-format and organize imports for Dart files.
 --
 --       ## COOL HACKS
 --       -> 6. Effect: URL underline.
@@ -194,6 +195,26 @@ autocmd("BufWritePre", {
       vim.fn.mkdir(vim.fn.fnamemodify(
         vim.uv.fs_realpath(args.match) or args.match, ":p:h"), "p")
     end
+  end,
+})
+
+-- 6. Auto-format and organize imports for Dart files.
+-- 6. Auto-format and organize imports for Dart files.
+autocmd("BufWritePre", {
+  pattern = "*.dart",
+  desc = "Auto-format and organize imports for Dart files on save",
+  callback = function()
+    -- Organize imports
+    vim.lsp.buf.code_action({
+      context = {
+        diagnostics = {},
+        only = { "source.organizeImports" },
+      },
+      apply = true, -- Automatically apply the action
+    })
+
+    -- Format the buffer
+    vim.lsp.buf.format({ async = false })
   end,
 })
 
