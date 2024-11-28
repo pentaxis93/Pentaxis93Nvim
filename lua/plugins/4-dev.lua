@@ -37,6 +37,9 @@
 
 --       ## LANGUAGE IMPROVEMENTS
 --       -> guttentags_plus                [auto generate C/C++ tags]
+--
+--       ## FLUTTER
+--       -> flutter-tools                  [flutter lsp & dev tools]
 
 local is_windows = vim.fn.has('win32') == 1 -- true if on windows
 
@@ -901,5 +904,18 @@ return {
       })
     end,
   },
+
+  -- FLUTTER ----------------------------------------------------
+  -- flutter-tools [flutter lsp & dev tools]
+  -- https://github.com/nvim-flutter/flutter-tools.nvim
+  {
+    'nvim-flutter/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = true,
+}
 
 } -- end of return
