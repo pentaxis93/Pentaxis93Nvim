@@ -693,21 +693,4 @@ return {
       }
     end,
   },
-
-  -- distroupdate.nvim [distro update]
-  -- https://github.com/zeioth/distroupdate.nvim
-  {
-    "zeioth/distroupdate.nvim",
-    event = "User BaseFile",
-    cmd = {
-      "DistroFreezePluginVersions",
-      "DistroReadChangelog",
-      "DistroReadVersion",
-      "DistroUpdate",
-      "DistroUpdateRevert",
-    },
-    opts = {
-      channel = "stable", -- stable/nightly
-    },
-  },
 } -- end of return
