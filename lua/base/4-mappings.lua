@@ -913,25 +913,25 @@ if is_available("telescope.nvim") then
     desc = "Find Dart source files",
   }
   -- Extended file finder - includes platform code and configuration
-  maps.n["<leader>fF"] = {
-    function()
-      require("telescope.builtin").find_files({
-        -- No search_dirs restriction - search everywhere
-        file_ignore_patterns = {
-          -- Only ignore build artifacts and tool directories
-          "build/",
-          ".dart_tool/",
-          -- Still ignore generated files
-          "*.freezed.dart",
-          "*.g.dart",
-          "*.mocks.dart",
-        },
-        follow = true,
-        hidden = true, -- Include hidden files for platform configs
-      })
-    end,
-    desc = "Find all project files",
-  }
+  -- maps.n["<leader>fF"] = {
+  --   function()
+  --     require("telescope.builtin").find_files({
+  --       -- No search_dirs restriction - search everywhere
+  --       file_ignore_patterns = {
+  --         -- Only ignore build artifacts and tool directories
+  --         "build/",
+  --         ".dart_tool/",
+  --         -- Still ignore generated files
+  --         "*.freezed.dart",
+  --         "*.g.dart",
+  --         "*.mocks.dart",
+  --       },
+  --       follow = true,
+  --       hidden = true, -- Include hidden files for platform configs
+  --     })
+  --   end,
+  --   desc = "Find all project files",
+  -- }
   maps.n["<leader>fh"] = {
     function() require("telescope.builtin").help_tags() end,
     desc = "Find help",
@@ -971,17 +971,17 @@ if is_available("telescope.nvim") then
     end,
     desc = "Find themes",
   }
-  -- maps.n["<leader>ff"] = {
-  --   function()
-  --     require("telescope.builtin").live_grep({
-  --       additional_args = function(args)
-  --         args.additional_args = { "--hidden", "--no-ignore" }
-  --         return args.additional_args
-  --       end,
-  --     })
-  --   end,
-  --   desc = "Find words in project",
-  -- }
+  maps.n["<leader>fF"] = {
+    function()
+      require("telescope.builtin").live_grep({
+        additional_args = function(args)
+          args.additional_args = { "--hidden", "--no-ignore" }
+          return args.additional_args
+        end,
+      })
+    end,
+    desc = "Find words in project",
+  }
   -- maps.n["<leader>fF"] = {
   --   function() require("telescope.builtin").live_grep() end,
   --   desc = "Find words in project (no hidden)",
