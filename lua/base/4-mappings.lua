@@ -1233,7 +1233,7 @@ end
 
 -- Extra - nodejs testing commands
 maps.n["<leader>Ta"] = {
-  function() vim.cmd("TestNodejs") end,
+  function() vim.cmd("TestFlutter") end,
   desc = "All",
 }
 maps.n["<leader>Te"] = {

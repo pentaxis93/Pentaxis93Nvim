@@ -273,6 +273,11 @@ cmd("TestNodejs", function()
   vim.cmd(":TermExec cmd='npm run test'") -- convention to run tests on nodejs
 end, { desc = "Run all unit tests for the current nodejs project" })
 
+cmd("TestFlutter", function()
+  vim.cmd(":ProjectRoot")                 -- cd the project root (requires project.nvim)
+  vim.cmd(":TermExec cmd='flutter test'") -- convention to run tests on flutter
+end, { desc = "Run all unit tests for the current flutter project" })
+
 -- Customize this command to work as you like
 cmd("TestNodejsE2e", function()
   vim.cmd(":ProjectRoot")                -- cd the project root (requires project.nvim)
