@@ -644,7 +644,9 @@ return {
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = (lspkind_loaded and lspkind.cmp_format(
-            utils.get_plugin_opts("lspkind.nvim")
+            vim.tbl_extend("force", utils.get_plugin_opts("lspkind.nvim") or {}, {
+              symbol_map = { Supermaven = "" },
+            })
           )) or nil,
         },
         snippet = {
@@ -740,11 +742,12 @@ return {
           end, { "i", "s" }),
         },
         sources = cmp.config.sources({
-          { name = "nvim_lsp", priority = 1000 },
-          { name = "lazydev",  priority = 850 },
-          { name = "luasnip",  priority = 750 },
-          { name = "buffer",   priority = 500 },
-          { name = "path",     priority = 250 },
+          { name = "nvim_lsp",    priority = 1000 },
+          { name = "supermaven",  priority = 900 },
+          { name = "lazydev",     priority = 850 },
+          { name = "luasnip",     priority = 750 },
+          { name = "buffer",      priority = 500 },
+          { name = "path",        priority = 250 },
         }),
       }
     end,
