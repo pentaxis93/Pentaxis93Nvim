@@ -39,8 +39,8 @@
 --       -> guttentags_plus                [auto generate C/C++ tags]
 --
 --       ## FLUTTER
---       -> flutter-tools                  [flutter lsp & dev tools]
 --       -> bloc.nvim                      [bloc template generation & wrapping]
+--       -> awesome-flutter-snippets       [flutter snippets]
 
 local is_windows = vim.fn.has("win32") == 1 -- true if on windows
 
@@ -957,7 +957,6 @@ return {
 
   -- FLUTTER ----------------------------------------------------
   -- bloc.nvim                      [bloc template generation & wrapping]
-  -- flutter-tools [flutter lsp & dev tools]
   -- https://github.com/RobertPietraru/bloc.nvim
   {
     "RobertPietraru/bloc.nvim",
@@ -965,14 +964,19 @@ return {
       { "jose-elias-alvarez/null-ls.nvim" },
     },
 
-    -- https://github.com/nvim-flutter/flutter-tools.nvim
-    -- {
-    --   "nvim-flutter/flutter-tools.nvim",
-    --   lazy = false,
-    --   dependencies = {
-    --     "nvim-lua/plenary.nvim",
-    --     "stevearc/dressing.nvim", -- optional for vim.ui.select
-    --   },
-    --   config = true,
+    -- awesome-flutter-snippets       [flutter snippets]
+    -- https://github.com/Nash0x7E2/awesome-flutter-snippets
+    {
+      "Nash0x7E2/awesome-flutter-snippets",
+      ft = { "dart" },
+      event = "User BaseFile",
+      dependencies = {
+        "L3MON4D3/LuaSnip",
+        "hrsh7th/nvim-cmp",
+      },
+      config = function()
+        require("luasnip").filetype_extend("dart", { "flutter" })
+      end,
+    },
   },
 } -- end of return
